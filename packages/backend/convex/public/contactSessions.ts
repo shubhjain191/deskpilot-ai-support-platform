@@ -1,0 +1,62 @@
+import { v } from "convex/values";
+import { mutation } from "../_generated/server";
+
+const SESSION_DURATION_MS = 24 * 60 * 60 * 1000;
+
+// create contact session
+export const create = mutation({
+    args: {
+        name: v.string(),
+        email: v.string(),
+        organizationID: v.string(),
+        metadata: v.optional(v.object({
+            userAgent: v.optional(v.string()),
+            language: v.optional(v.string()),
+            languages: v.optional(v.array(v.string())),
+            platform: v.optional(v.string()),
+            vendor: v.optional(v.string()),
+            screenResolution: v.optional(v.string()),
+            viewportSize: v.optional(v.string()),
+            timezone: v.optional(v.string()),
+            timeZoneOffset: v.optional(v.number()),
+            cookieEnabled: v.optional(v.boolean()),
+            referrer: v.optional(v.string()),
+            currentUrl: v.optional(v.string()),
+        })
+    )},
+    handler: async (ctx, args) => {
+        const now = Date.now();
+        const expiresAt = now + SESSION_DURATION_MS;
+
+        const contactSessionID = await ctx.db.insert("contactSessions", {
+            name: args.name,
+            email: args.email,
+            organizationID: args.organizationID,
+            metadata: args.metadata,
+            expiresAt,
+        });
+
+        return contactSessionID;
+    }
+})
+
+// validate contact session
+export const validate = mutation({
+    args: {
+        contactSessionID: v.id("contactSessions"),
+    },
+    handler: async (ctx, args) => {
+       const contactSession = await ctx.db.get(args.contactSessionID);
+
+       if (!contactSession) {
+           return { valid: false, reason: "Contact session not found"};
+       }
+
+       if (contactSession.expiresAt < Date.now()) {
+           return { valid: false, reason: "Contact session expired"};
+       }
+
+       return { valid: true, contactSession};
+    }
+})
+
