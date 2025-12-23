@@ -1,0 +1,33 @@
+﻿convex/public/contactSessions.ts(2,26): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../_generated/server.js'?
+convex/public/contactSessions.ts(27,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+convex/public/contactSessions.ts(27,26): error TS7006: Parameter 'args' implicitly has an 'any' type.
+convex/public/contactSessions.ts(48,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+convex/public/contactSessions.ts(48,26): error TS7006: Parameter 'args' implicitly has an 'any' type.
+convex/public/conversations.ts(1,33): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../_generated/server.js'?
+convex/public/conversations.ts(3,30): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../system/ai/agents/supportAgent.js'?
+convex/public/conversations.ts(5,28): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../_generated/api.js'?
+convex/public/conversations.ts(13,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+convex/public/conversations.ts(13,26): error TS7006: Parameter 'args' implicitly has an 'any' type.
+convex/public/conversations.ts(52,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+convex/public/conversations.ts(52,26): error TS7006: Parameter 'args' implicitly has an 'any' type.
+convex/public/messages.ts(2,31): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../_generated/server.js'?
+convex/public/messages.ts(3,26): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../_generated/api.js'?
+convex/public/messages.ts(5,30): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../system/ai/agents/supportAgent.js'?
+convex/public/messages.ts(14,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+convex/public/messages.ts(14,26): error TS7006: Parameter 'args' implicitly has an 'any' type.
+convex/public/messages.ts(72,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+convex/public/messages.ts(72,26): error TS7006: Parameter 'args' implicitly has an 'any' type.
+convex/public/organizations.ts(3,24): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../_generated/server.js'?
+convex/public/organizations.ts(14,21): error TS7006: Parameter '_' implicitly has an 'any' type.
+convex/public/organizations.ts(14,24): error TS7006: Parameter 'args' implicitly has an 'any' type.
+convex/system/ai/agents/supportAgent.ts(3,28): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../../../_generated/api.js'?
+convex/system/contactSessions.ts(2,31): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../_generated/server.js'?
+convex/system/contactSessions.ts(8,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+convex/system/contactSessions.ts(8,26): error TS7006: Parameter 'args' implicitly has an 'any' type.
+convex/system/conversations.ts(2,31): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean '../_generated/server.js'?
+convex/system/conversations.ts(8,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+convex/system/conversations.ts(8,26): error TS7006: Parameter 'args' implicitly has an 'any' type.
+convex/system/conversations.ts(11,37): error TS7006: Parameter 'q' implicitly has an 'any' type.
+convex/users.ts(1,33): error TS2835: Relative import paths need explicit file extensions in ECMAScript imports when '--moduleResolution' is 'node16' or 'nodenext'. Did you mean './_generated/server.js'?
+convex/users.ts(5,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
+convex/users.ts(13,21): error TS7006: Parameter 'ctx' implicitly has an 'any' type.
