@@ -1,7 +1,7 @@
-function page() {
-  return (
-    <div>Conversations</div>
-  )
+import { ConversationsView } from "@/modules/dashboard/ui/views/conversations-view";
+
+function Page() {
+  return <ConversationsView />
 }
 
-export default page
+export default Page
