@@ -1,11 +1,53 @@
 import { v } from "convex/values";
+import { generateText } from "ai";
 import { action, query } from "../_generated/server";
-import { internal, components } from "../_generated/api";
+import { internal, components, api } from "../_generated/api";
 import { ConvexError } from "convex/values";
 import { supportAgent } from "../system/ai/agents/supportAgent";
 import { paginationOptsValidator } from "convex/server";
 import { saveMessage } from "@convex-dev/agent";
+import { groq } from "@ai-sdk/groq";
 
+
+export const enhanceResponse = action({
+    args: {
+        prompt: v.string(),
+    }, 
+    handler: async (ctx, args) => {
+        const identity = await ctx.auth.getUserIdentity();
+
+        if (identity === null) {
+            throw new ConvexError({
+                code: "UNAUTHORIZED",
+                message: "Identity not found"
+            })
+        }
+        const orgId = identity.orgId as string;
+
+        if(!orgId) {
+            throw new ConvexError({
+                code: "UNAUTHORIZED",
+                message: "Organization not found",
+            })
+        }
+
+        const response = await generateText({
+            model: groq('llama-3.3-70b-versatile'),
+            messages: [
+                {
+                    role: "system",
+                    content: "Enhance the operator's message to be more professional, clear and helpful while maintaining their intent and key information. Do not add any new information that is not present in the original message. Do not change the meaning of the message. Do not add any emojis. Do not add any formatting. Do not add any markdown. Do not add any code. Do not add any links. Do not add any images. Do not add any files. Do not add any attachments. Do not add any other content. Just enhance the message."
+                },
+                {
+                    role: "user",
+                    content: args.prompt,
+                }
+            ]
+        })
+
+        return response.text;
+    }
+})
 
 export const create = action({
     args: {
@@ -31,15 +73,9 @@ export const create = action({
             })
         }
 
-        const conversation = await ctx.db.get(args.conversationId);
-
-        // If no conversation exists for this thread, we return an error
-        if(!conversation) {
-            throw new ConvexError({
-                code: "NOT_FOUND",
-                message: "Conversation not found"
-            })
-        }
+        const conversation = await ctx.runQuery(api.private.conversations.getOne, {
+            conversationId: args.conversationId
+        });
 
         if(conversation.organizationId !== orgId) {
             throw new ConvexError({
