@@ -6,7 +6,7 @@ import { ConvexError } from "convex/values";
 import { supportAgent } from "../system/ai/agents/supportAgent";
 import { paginationOptsValidator } from "convex/server";
 import { saveMessage } from "@convex-dev/agent";
-import { groq } from "@ai-sdk/groq";
+import { google } from "@ai-sdk/google";
 
 
 export const enhanceResponse = action({
@@ -32,7 +32,7 @@ export const enhanceResponse = action({
         }
 
         const response = await generateText({
-            model: groq('llama-3.3-70b-versatile'),
+            model: google('gemini-2.5-flash-lite'),
             messages: [
                 {
                     role: "system",
@@ -90,6 +90,13 @@ export const create = action({
                 code: "UNAUTHORIZED",
                 message: "Conversation is resolved"
             })
+        }
+
+        if (conversation.status === "unresolved") {
+            await ctx.runMutation(api.private.conversations.updateStatus, {
+                conversationId: args.conversationId,
+                status: "escalated",
+            });
         }
 
         await saveMessage(ctx, components.agent, {
