@@ -1,6 +1,8 @@
+import { FilesView } from "@/modules/files/ui/views/files-view"
+
 function page() {
   return (
-    <div>Files</div>
+        <FilesView />
   )
 }
 
