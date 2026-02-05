@@ -1,7 +1,8 @@
+import { VapiView } from "@/modules/plugins/ui/views/vapi-view";
 
 function page() {
   return (
-    <div>Vapi AI</div>
+    <VapiView />
   )
 }
 
