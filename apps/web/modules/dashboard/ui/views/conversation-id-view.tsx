@@ -280,7 +280,7 @@ export const ConversationIdViewLoading = () => {
                 <AIInputTextarea 
                 disabled
                 placeholder="Type your response as an operator..."
-                >
+                />
                   <AIInputToolbar>
                     <AIInputTools />        
                     <AIInputSubmit
@@ -288,7 +288,6 @@ export const ConversationIdViewLoading = () => {
                     status="ready"
                     />
                   </AIInputToolbar>
-                </AIInputTextarea>
               </AIInput>
             </div>
         </div>

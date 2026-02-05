@@ -16,8 +16,10 @@
   "dependencies": {
     "@ai-sdk/google": "^3.0.18",
     "@ai-sdk/provider-utils": "^3.0.7",
+    "@aws-sdk/client-secrets-manager": "^3.983.0",
     "@clerk/backend": "^2.27.1",
     "@convex-dev/agent": "^0.3.2",
+    "@convex-dev/agent-playground": "^0.0.20",
     "@convex-dev/rag": "^0.7.0",
     "ai": "^6.0.1",
     "convex": "^1.31.2",

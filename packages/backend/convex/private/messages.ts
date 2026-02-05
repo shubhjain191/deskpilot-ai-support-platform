@@ -7,6 +7,7 @@ import { supportAgent } from "../system/ai/agents/supportAgent";
 import { paginationOptsValidator } from "convex/server";
 import { saveMessage } from "@convex-dev/agent";
 import { google } from "@ai-sdk/google";
+import { OPERATOR_MESSAGE_ENHANCEMENT_PROMPT } from "../system/ai/constants";
 
 
 export const enhanceResponse = action({
@@ -36,7 +37,7 @@ export const enhanceResponse = action({
             messages: [
                 {
                     role: "system",
-                    content: "Enhance the operator's message to be more professional, clear and helpful while maintaining their intent and key information. Do not add any new information that is not present in the original message. Do not change the meaning of the message. Do not add any emojis. Do not add any formatting. Do not add any markdown. Do not add any code. Do not add any links. Do not add any images. Do not add any files. Do not add any attachments. Do not add any other content. Just enhance the message."
+                    content: OPERATOR_MESSAGE_ENHANCEMENT_PROMPT
                 },
                 {
                     role: "user",
