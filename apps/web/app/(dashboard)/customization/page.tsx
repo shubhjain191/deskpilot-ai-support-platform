@@ -1,7 +1,9 @@
 
+import { CustomizationView } from "@/modules/customization/ui/views/customization-view"
+
 function page() {
   return (
-    <div>Customization</div>
+    <CustomizationView />
   )
 }
 

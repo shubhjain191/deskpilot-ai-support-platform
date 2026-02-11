@@ -2,6 +2,20 @@ import { defineSchema, defineTable } from "convex/server"
 import { v } from "convex/values"
 
 export default defineSchema({
+    widgetSettings: defineTable({
+        organizationId: v.string(),
+        greetMessage: v.string(),
+        defaultSuggestions: v.object({
+            suggestions1: v.array(v.string()),
+            suggestions2: v.array(v.string()),
+            suggestions3: v.array(v.string()),
+        }),
+        vapiSettings: v.object({
+            assistantId: v.optional(v.string()),
+            phoneNumber: v.optional(v.string()),
+        })
+    })
+    .index("by_organization_id", ["organizationId"]),
     plugins: defineTable({
         organizationId: v.string(),
         service: v.union(v.literal("vapi")),
